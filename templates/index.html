@@ -46,6 +46,8 @@
         justify-content: center;
 
     }
+
+
     </style>
 </head>
 <body>
@@ -62,6 +64,24 @@
         <input class="form-control" type="file" name="image" accept="image/*" id="fileInput">
     </form>
     <button id="launchCamera"></button>
+
+    <div id="loadingAnimation" style="display:none;">
+        <div class="spinner-grow text-success" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-danger" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-warning" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-info" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <br>
+        <p class="fw-bold" role="status">Processing Image...</p>
+    </div>
+
 </div>
 
 <script>
@@ -71,9 +91,18 @@
 
     document.getElementById('fileInput').addEventListener('change', function() {
         if (this.files && this.files.length) {
+            // Hide camera button
+            document.getElementById('launchCamera').style.display = 'none';
+
+            // Show loading animation
+            document.getElementById('loadingAnimation').style.display = 'block';
+
+            // Submit the form
             document.getElementById('imageUploadForm').submit();
         }
     });
+
+
 
 </script>
 
